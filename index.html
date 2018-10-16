@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Scala.js, Scala.CSS et React, l'histoire d'une découverte</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -23,10 +23,63 @@
 	</head>
 	<body>
 		<div class="reveal">
+			<header style="position: absolute;top: 0; width:100%; z-index:500; height:35px; ;background-color: black;">
+				<img src="images/scalaio.png" />
+			</header>
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section><h1>Scala.js, Scala.CSS et React, l'histoire d'une découverte</h1></section>
+				<section>
+					<h2>Qui sommes-nous&nbsp;?</h2>
+					<ul>
+						<li>Maude Cahuet</li>
+						<li>Marc Gedik</li>
+						<li>Cedric Murer</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Le projet</h2>
+					<h4>Full scala</h4>
+					<ul>
+						<li>React</li>
+						<li>ScalaJs - ScalaCss</li>
+						<li>Akka http</li>
+					</ul>
+				</section>
+				<section>
+					<h2>ScalaJs</h2>
+					<ul>
+						<li>History</li>
+						<li>Compilateur Scala en code Javascript.</li>
+						<li>Typage fort</li>
+						<li>Modèle partagé back et front</li>
+						<li>Compilation incrémentielle</li>
+						<li>Intégration avec des librairies Js</li>
+					</ul>
+				</section>
+				<section>
+					<h2>ScalaJs</h2>
+					<h4>Perfs</h4>
+					<blockquote cite="https://www.scala-js.org/doc/internals/performance.html" style="font-size:20px;">
+						It is safe to say that Scala.js performance is very good, right there on par with hand-written
+						JavaScript in comparable cases
+					</blockquote>
+					<img src="/images/perf.png" style="background-color: white; width:50%;">
+				</section>
+				<section>
+					<h2>ScalaJs</h2>
+					<p>build.sbt</p>
+					<ul>
+						<li>Plugin ScalaJs et Sbt web scala js</li>
+						<li>Back</li>
+						<li>Shared pour le modèle</li>
+						<li>Client</li>
+					</ul>
+				</section>
+
 			</div>
+			<footer id="footer-sponsor" style="width:100%; position:absolute; bottom:0;">
+				<img src="images/banner.png" style="width:100%;"/>
+			</footer>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
@@ -44,6 +97,11 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+            Reveal.addEventListener( 'slidechanged', function( event ) {
+
+                document.getElementById('footer-sponsor').style.display = Reveal.isFirstSlide()?'block':'none';
+
+            });
 		</script>
 	</body>
 </html>
