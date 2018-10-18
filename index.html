@@ -27,7 +27,7 @@
 				<img src="images/scalaio.png" />
 			</header>
 			<div class="slides">
-				<section><h1>Scala.js, Scala.CSS et React, l'histoire d'une découverte</h1></section>
+				<section><h2>Scala.js, Scala.CSS et React, l'histoire d'une découverte</h2></section>
 				<section>
 					<h2>Qui sommes-nous&nbsp;?</h2>
 					<ul>
@@ -37,38 +37,166 @@
 					</ul>
 				</section>
 				<section>
-					<h1>What</h1>
-					<ul>
-						<li>1 seul language</li>
-						<li>Réduction du coût d'entrée sur les technos Js</li>
-						<li>Testabilité front</li>
-						<li>un outil commun de build front et back</li>
-					</ul>
-					<p>Synergie à tous niveaux</p>
+					<h2>Contexte</h2>
+					<p>Un client voulant une stack scala</p>
 				</section>
 				<section>
-					<h2>Le projet</h2>
-					<h4>Full scala</h4>
-					<ul>
-						<li>ScalaJs - React</li>
-						<li>ScalaJs - ScalaCss</li>
-						<li>Akka-Http</li>
-					</ul>
+					<h2 style="margin-top: 20px;">Technos</h2>
+					<section>
+						<h4>ScalaJS</h4>
+						<ul>
+							<li>Uniquement du typage fort</li>
+							<li>Modèle unique partagé entre front et back</li>
+						</ul>
+					</section>
+					<section>
+						<h4>ScalaJSReact</h4>
+						<ul>
+							<li>Connaissance de React en interne</li>
+							<li>Orienté composant</li>
+						</ul>
+					</section>
+					<section>
+						<h4>ScalaCss</h4>
+						<ul>
+							<li>Typage fort</li>
+							<li>Maîtrise le style à la compilation pour les composants</li>
+						</ul>
+					</section>
 				</section>
 				<section>
-					<h2>ScalaJs</h2>
-					<ul>
-						<li>History</li>
-						<li>Compilateur Scala en code Javascript.</li>
-						<li>Typage fort</li>
-						<li>Modèle partagé back et front</li>
-						<li>Compilation incrémentielle</li>
-						<li>Intégration avec des librairies Js</li>
-					</ul>
+					<h2 style="margin-top: 20px;">Use case</h2>
+					<section>
+						<p>Application d'Halloween</p>
+						<p>Swipe à la tinder</p>
+					</section>
+					<section>
+						<h4>Démo</h4>
+					</section>
 				</section>
 				<section>
-					<h2>ScalaJs</h2>
-					<h4>Perfs</h4>
+					<h2>Schéma</h2>
+					<img src="/images/schema.png" style="background-color: white; width:50%;">
+				</section>
+				<section>
+					<h2 style="margin-top: 20px;">SBT</h2>
+					<section>
+						<h4>Module Shared</h4>
+						<ul>
+							<li>Dédié au modèle</li>
+							<li>Cross project</li>
+							<li>Circe pour la sérialisation/déserialisation</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Module Client</h4>
+						<ul>
+							<li>ScalaJSPlugin -- activer ScalaJS</li>
+							<li>ScalaJSWeb -- Porter les sources sur un serveur web</li>
+							<li>webJars / npm -- dependences JS</li>
+							<li>Compilation incrémentale</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Module Serveur</h4>
+						<ul>
+							<li>module classic</li>
+							<li>SbtWeb</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Sbt sous le capot</h4>
+						<ul>
+							<li>Module classic</li>
+							<li>SbtWeb</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2 style="margin-top: 20px;">Scala JS React</h2>
+					<section>
+						<h4>React APP</h4>
+						<code>
+							<html>
+								<body>
+									<div id="app"></div>
+									<script type="text/javascript" src="assets/client-jsdeps.js"></script>
+									<script type="text/javascript" src="assets/client-fastopt.js"></script>
+								</body>
+							</html>
+						</code>
+					</section>
+					<section>
+						<h4>Router</h4>
+						<pre><code data-trim class="scala">
+							AppRouter
+							.router
+							.mapUnmounted(_.renderIntoDOM(dom.document.body))
+						</code></pre>
+					</section>
+					<section>
+						<h4>VDOM</h4>
+						<pre><code data-trim class="scala">
+							<.div(
+								<.img(^.src := "pumpkin.png"),
+								^.input(
+									"🎃",
+									^.onClick --> swipeLeft
+								)
+							)
+						</code></pre>
+					</section>
+					<section>
+						<h4>Callback</h4>
+						<p>callback js monadique</p>
+						<pre><code data-trim class="scala">
+							val swipeLeft = Callback { println("I have fear !!") }
+						</code></pre>
+					</section>
+					<section>
+						<h4>Page Static</h4>
+						<pre><code data-trim class="scala">
+							val Card = ScalaComponent.builder[Image]("Card")
+							.render($ => <.img(^.src := $.props.url))
+							.build
+						</code></pre>
+					</section>
+					<section>
+						<h4>Backend</h4>
+						<p>s'apparente au component React</p>
+						<pre><code data-trim class="scala">
+
+						</code></pre>
+					</section>
+					<section>
+						<h4>ScalaCss</h4>
+						<pre><code data-trim class="scala">
+						</code></pre>
+					</section>
+					<section>
+						<h4>Ajax</h4>
+						<code>
+						</code>
+					</section>
+				</section>
+				<section>
+					<img src="https://i.giphy.com/media/JIX9t2j0ZTN9S/giphy.webp" style="width:70%; margin-top: 5px; margin-bottom: 5px;">
+				</section>
+				<section>
+					<h2 style="margin-top: 20px;">Intégration lib js</h2>
+					<code>
+						Blabla
+					</code>
+				</section>
+				<section>
+					<h2 style="margin-top: 20px;">Tests</h2>
+					<code>
+						Blabla
+					</code>
+				</section>
+				<section>
+					<h2 style="margin-top: 20px;">Perfs</h2>
+					<p><a href="https://www.scala-js.org/doc/internals/performance.html">scalajs</a></p>
 					<blockquote cite="https://www.scala-js.org/doc/internals/performance.html" style="font-size:20px;">
 						It is safe to say that Scala.js performance is very good, right there on par with hand-written
 						JavaScript in comparable cases
@@ -76,29 +204,32 @@
 					<img src="/images/perf.png" style="background-color: white; width:50%;">
 				</section>
 				<section>
-					<h2>ScalaJs</h2>
-					<p>build.sbt</p>
+					<h2 style="margin-top: 20px;">Nos + / Nos -</h2>
+					<h4 style="margin-top: 5px;">+</h4>
 					<ul>
-						<li>Plugin ScalaJs et Sbt web scala js</li>
-						<li>Back</li>
-						<li>Shared pour le modèle</li>
-						<li>Client</li>
+						<li>1 seul language</li>
+						<li>1 seul outil de build</li>
+						<li>typage fort partout</li>
+						<li>une communauté <a href="http://www.scala-js.org/libraries/facades.html">librairies portées</a></li>
+					</ul>
+					<h4 style="margin-top: 5px;">-</h4>
+					<ul>
+						<li>temps de compilation augmentée</li>
+						<li>difficile pour un intégrateur</li>
+						<li>le JS tout de même présent</li>
 					</ul>
 				</section>
 				<section>
-					<section>
-						<h2>ScalaJs</h2>
-						<p>Render front dans le back</p>
-						<ul>
-							<li>Configuration sbt</li>
-							<li>Client - ReactApp</li>
-							<li>Router</li>
-						</ul>
-					</section>
+					<h2 style="margin-top: 20px;">Est-ce qu'on reprendrais ScalaJs ?</h2>
 				</section>
+				<section>
+					<h2 style="margin-top: 20px;">Merci</h2>
+                    <img src="">
+                    <p>code sur github</p>
+                </section>
 			</div>
 			<footer id="footer-sponsor" style="width:100%; position:absolute; bottom:0;">
-				<img src="images/banner.png" style="width:100%;"/>
+				<img src="images/banner.png" style="width:100%; height: 70%;"/>
 			</footer>
 		</div>
 
