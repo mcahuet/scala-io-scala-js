@@ -104,11 +104,20 @@
 							<li>SbtWeb</li>
 						</ul>
 					</section>
+                    <section>
+                        <h4>Compilation incrémentale</h4>
+                        <ul>
+                            <li>fichiers .sjsir par .class</li>
+                            <li>regroupés et publiés sur référentiel</li>
+                            <li>fichier js = concaténation des .sjsir</li>
+                        </ul>
+                    </section>
 					<section>
 						<h4>Sbt sous le capot</h4>
 						<ul>
 							<li>Module classic</li>
 							<li>SbtWeb</li>
+							<li>compilation incrémentale</li>
 						</ul>
 					</section>
 				</section>
@@ -116,87 +125,77 @@
 					<h2 style="margin-top: 20px;">Scala JS React</h2>
 					<section>
 						<h4>React APP</h4>
-						<code>
-							<html>
-								<body>
-									<div id="app"></div>
-									<script type="text/javascript" src="assets/client-jsdeps.js"></script>
-									<script type="text/javascript" src="assets/client-fastopt.js"></script>
-								</body>
-							</html>
-						</code>
+						<ul>
+                            <li>serveur/public/index.html</li>
+                            <li>client/ReactApp</li>
+                        </ul>
 					</section>
 					<section>
 						<h4>Router</h4>
-						<pre><code data-trim class="scala">
-							AppRouter
-							.router
-							.mapUnmounted(_.renderIntoDOM(dom.document.body))
-						</code></pre>
+						<ul>
+                            <li>AppRouter</li>
+                            <li>ReactApp</li>
+                        </ul>
 					</section>
 					<section>
 						<h4>VDOM</h4>
-						<pre><code data-trim class="scala">
-							<.div(
-								<.img(^.src := "pumpkin.png"),
-								^.input(
-									"🎃",
-									^.onClick --> swipeLeft
-								)
-							)
-						</code></pre>
+						<p>Exemple du Button</p>
 					</section>
 					<section>
 						<h4>Callback</h4>
 						<p>callback js monadique</p>
-						<pre><code data-trim class="scala">
-							val swipeLeft = Callback { println("I have fear !!") }
-						</code></pre>
+						<ul>
+                            <li>composable</li>
+                            <li>on peut mettre un délai</li>
+                            <li>répétable</li>
+                        </ul>
 					</section>
 					<section>
 						<h4>Page Static</h4>
-						<pre><code data-trim class="scala">
-							val Card = ScalaComponent.builder[Image]("Card")
-							.render($ => <.img(^.src := $.props.url))
-							.build
-						</code></pre>
+						<ul>
+                            <li>Page</li>
+                        </ul>
 					</section>
 					<section>
 						<h4>Backend</h4>
 						<p>s'apparente au component React</p>
-						<pre><code data-trim class="scala">
-
-						</code></pre>
+						<ul>
+                            <li>HomePage</li>
+                        </ul>
 					</section>
 					<section>
 						<h4>ScalaCss</h4>
-						<pre><code data-trim class="scala">
-						</code></pre>
+						<ul>
+                            <li>HeaderStyle</li>
+                        </ul>
 					</section>
 					<section>
 						<h4>Ajax</h4>
-						<code>
-						</code>
+                        <ul>
+                            <li>React</li>
+                            <li>ApiClient</li>
+                        </ul>
 					</section>
 				</section>
 				<section>
-					<img src="https://i.giphy.com/media/JIX9t2j0ZTN9S/giphy.webp" style="width:70%; margin-top: 5px; margin-bottom: 5px;">
-				</section>
-				<section>
 					<h2 style="margin-top: 20px;">Intégration lib js</h2>
-					<code>
-						Blabla
-					</code>
+					<ul>
+                        <li>Konami</li>
+                    </ul>
 				</section>
 				<section>
 					<h2 style="margin-top: 20px;">Tests</h2>
-					<code>
-						Blabla
-					</code>
+                    <p>ScalaTest</p>
+                    <p>japgolly-react-test</p>
+					<ul>
+                        <li>Test : scénario</li>
+                        <li>Dsl : définition des intéractions avec l'application</li>
+                        <li>Observer : selection des éléments du Dom</li>
+                    </ul>
 				</section>
 				<section>
 					<h2 style="margin-top: 20px;">Perfs</h2>
-					<p><a href="https://www.scala-js.org/doc/internals/performance.html">scalajs</a></p>
+					<p><a href="https://www.scala-js.org/doc/internals/performance.html">https://www.scala-js.org</a></p>
 					<blockquote cite="https://www.scala-js.org/doc/internals/performance.html" style="font-size:20px;">
 						It is safe to say that Scala.js performance is very good, right there on par with hand-written
 						JavaScript in comparable cases
@@ -205,19 +204,23 @@
 				</section>
 				<section>
 					<h2 style="margin-top: 20px;">Nos + / Nos -</h2>
-					<h4 style="margin-top: 5px;">+</h4>
-					<ul>
-						<li>1 seul language</li>
-						<li>1 seul outil de build</li>
-						<li>typage fort partout</li>
-						<li>une communauté <a href="http://www.scala-js.org/libraries/facades.html">librairies portées</a></li>
-					</ul>
-					<h4 style="margin-top: 5px;">-</h4>
-					<ul>
-						<li>temps de compilation augmentée</li>
-						<li>difficile pour un intégrateur</li>
-						<li>le JS tout de même présent</li>
-					</ul>
+                    <section>
+                        <h4 style="margin-top: 5px;">+</h4>
+                        <ul>
+                            <li>1 seul language</li>
+                            <li>1 seul outil de build</li>
+                            <li>typage fort partout</li>
+                            <li>une communauté <a href="http://www.scala-js.org/libraries/facades.html">librairies portées</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4 style="margin-top: 5px;">-</h4>
+                        <ul>
+                            <li>temps de compilation augmentée</li>
+                            <li>difficile pour un intégrateur</li>
+                            <li>le JS tout de même présent</li>
+                        </ul>
+                    </section>
 				</section>
 				<section>
 					<h2 style="margin-top: 20px;">Est-ce qu'on reprendrais ScalaJs ?</h2>
