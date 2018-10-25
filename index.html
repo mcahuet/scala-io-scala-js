@@ -27,7 +27,7 @@
 				<img src="images/scalaio.png" />
 			</header>
 			<div class="slides">
-				<section><h2>Scala.js, Scala.CSS et React, l'histoire d'une découverte</h2></section>
+				<section><h2>Scala.js, ScalaCSS et React, l'histoire d'une découverte</h2></section>
 				<section>
 					<h2>Qui sommes-nous&nbsp;?</h2>
 					<ul>
@@ -38,19 +38,20 @@
 				</section>
 				<section>
 					<h2>Contexte</h2>
-					<p>Un client voulant une stack scala</p>
+					<p>Un client voulant une stack full scala</p>
 				</section>
 				<section>
 					<h2 style="margin-top: 20px;">Technos</h2>
 					<section>
-						<h4>ScalaJS</h4>
+						<h4>Scala.Js</h4>
 						<ul>
 							<li>Uniquement du typage fort</li>
 							<li>Modèle unique partagé entre front et back</li>
 						</ul>
 					</section>
 					<section>
-						<h4>ScalaJSReact</h4>
+						<h4>ScalaJs-React</h4>
+						<p>japgolly-scalajs-react</p>
 						<ul>
 							<li>Connaissance de React en interne</li>
 							<li>Orienté composant</li>
@@ -58,9 +59,10 @@
 					</section>
 					<section>
 						<h4>ScalaCss</h4>
+						<p>japgolly-scalacss</p>
 						<ul>
 							<li>Typage fort</li>
-							<li>Maîtrise le style à la compilation pour les composants</li>
+							<li>Maîtrise du style à la compilation</li>
 						</ul>
 					</section>
 				</section>
@@ -71,7 +73,7 @@
 						<p>Swipe à la tinder</p>
 					</section>
 					<section>
-						<h4>Démo</h4>
+						<p>Démo</p>
 					</section>
 				</section>
 				<section>
@@ -104,84 +106,93 @@
 							<li>SbtWeb</li>
 						</ul>
 					</section>
-                    <section>
-                        <h4>Compilation incrémentale</h4>
-                        <ul>
-                            <li>fichiers .sjsir par .class</li>
-                            <li>regroupés et publiés sur référentiel</li>
-                            <li>fichier js = concaténation des .sjsir</li>
-                        </ul>
-                    </section>
 					<section>
 						<h4>Sbt sous le capot</h4>
 						<ul>
 							<li>Module classic</li>
 							<li>SbtWeb</li>
-							<li>compilation incrémentale</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Compilation incrémentale</h4>
+						<ul>
+							<li>Fichiers .sjsir par .class</li>
+							<li>Fichier js = concaténation des .sjsir</li>
 						</ul>
 					</section>
 				</section>
 				<section>
-					<h2 style="margin-top: 20px;">Scala JS React</h2>
+					<h2 style="margin-top: 20px;">ScalaJs-React</h2>
 					<section>
 						<h4>React APP</h4>
 						<ul>
-                            <li>serveur/public/index.html</li>
-                            <li>client/ReactApp</li>
-                        </ul>
-					</section>
-					<section>
-						<h4>Router</h4>
-						<ul>
-                            <li>AppRouter</li>
-                            <li>ReactApp</li>
-                        </ul>
+                            <li>index.html côté serveur</li>
+                            <li>ReactApp.scala côté client</li>
+							<li>AppRouter.scala router côté client</li>
+						</ul>
 					</section>
 					<section>
 						<h4>VDOM</h4>
-						<p>Exemple du Button</p>
+						<ul>
+							<li>Virtual Dom React</li>
+							<li>DSL basé sur les tags HTML</li>
+						</ul>
 					</section>
 					<section>
 						<h4>Callback</h4>
-						<p>callback js monadique</p>
+						<p><i>"Callback js monadique"</i></p>
 						<ul>
-                            <li>composable</li>
-                            <li>on peut mettre un délai</li>
-                            <li>répétable</li>
+                            <li>Composable</li>
+                            <li>Délai</li>
+                            <li>Répétable</li>
                         </ul>
 					</section>
 					<section>
 						<h4>Page Static</h4>
 						<ul>
-                            <li>Page</li>
+                            <li>ScalaComponent</li>
+							<li>Rendu simple</li>
                         </ul>
 					</section>
 					<section>
 						<h4>Backend</h4>
-						<p>s'apparente au component React</p>
+						<p>S'apparente aux components React</p>
 						<ul>
-                            <li>HomePage</li>
+                            <li>Props</li>
+                            <li>State</li>
+                            <li>Rendu avec logique métier</li>
                         </ul>
 					</section>
 					<section>
 						<h4>ScalaCss</h4>
 						<ul>
-                            <li>HeaderStyle</li>
+                            <li>DSL basé les tags CSS</li>
+                            <li>Limitation dans les selectors</li>
+                            <li>Mode unsafe possible</li>
                         </ul>
 					</section>
 					<section>
 						<h4>Ajax</h4>
                         <ul>
                             <li>React</li>
-                            <li>ApiClient</li>
+                            <li>Exécute requête client-serveur</li>
+                            <li>Renvoie une Callback</li>
+							<li>Répétable (car c'est une Callback)</li>
                         </ul>
 					</section>
 				</section>
 				<section>
 					<h2 style="margin-top: 20px;">Intégration lib js</h2>
 					<ul>
-                        <li>Konami</li>
+						<li>Importation dans le build ou index.html</li>
+						<li>Binding avec la lib Js</li>
+                        <li>Exemple de Konami <img src="/images/konami.png" style="border: none; box-shadow: none; background: none; width: 50%; display: block;">
+						</li>
                     </ul>
+				</section>
+				<section>
+					<h2 style="margin-top: 20px;">Debug</h2>
+						<p>Démo</p>
 				</section>
 				<section>
 					<h2 style="margin-top: 20px;">Tests</h2>
@@ -209,26 +220,30 @@
                         <ul>
                             <li>1 seul language</li>
                             <li>1 seul outil de build</li>
-                            <li>typage fort partout</li>
-                            <li>une communauté <a href="http://www.scala-js.org/libraries/facades.html">librairies portées</a></li>
-                        </ul>
+                            <li>Typage fort partout</li>
+                            <li>Une communauté <a href="http://www.scala-js.org/libraries/facades.html">de librairies portées</a></li>
+							<li>Testabilité du front par le dev back</li>
+							<li>Debug front</li>
+						</ul>
                     </section>
                     <section>
                         <h4 style="margin-top: 5px;">-</h4>
                         <ul>
-                            <li>temps de compilation augmentée</li>
-                            <li>difficile pour un intégrateur</li>
-                            <li>le JS tout de même présent</li>
+                            <li>Temps de compilation</li>
+                            <li>Difficilement utilisable pour un intégrateur</li>
+                            <li>Intégration lib Js = conflits paradigmes</li>
                         </ul>
                     </section>
 				</section>
 				<section>
-					<h2 style="margin-top: 20px;">Est-ce qu'on reprendrais ScalaJs ?</h2>
+					<h2 style="margin-top: 20px;">Est-ce qu'on reprendrait Scala.Js ?</h2>
+					<p>OUI, parce que des devs back peuvent faire du front en SCALA</p>
+					<p>OUI, parce qu'on supprime les clivages front vs back</p>
 				</section>
 				<section>
 					<h2 style="margin-top: 20px;">Merci</h2>
-                    <img src="">
-                    <p>code sur github</p>
+                    <!--<img src="">-->
+                    <p>code sur github:  <a href="https://github.com/lunatech-labs/fpfpp">/lunatech-labs/fpfpp</a></p>
                 </section>
 			</div>
 			<footer id="footer-sponsor" style="width:100%; position:absolute; bottom:0;">
